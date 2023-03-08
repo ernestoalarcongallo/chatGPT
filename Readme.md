@@ -2,7 +2,7 @@
 
 This is a simple Flask app that allows users to chat with an OpenAI-powered chatbot. 
 Users can input a question, and the chatbot will generate a response based on its training.
-The model used is the `gpt-3.5-turbo`, and there's a limitation of tokens on the model's response to
+The model used is the `text-davinci-002`, and there's a limitation of tokens on the model's response to
 1024 tokens.
 
 Please find this app no more than a proof of concept.

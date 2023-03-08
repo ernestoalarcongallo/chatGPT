@@ -18,7 +18,7 @@ def generate_response(question: str) -> str:
     """
     # Set up the parameters for the API request
     completions = openai.Completion.create(
-        engine="gpt-3.5-turbo",
+        engine="text-davinci-002",
         prompt=question,
         max_tokens=1024,
         temperature=0.5,
