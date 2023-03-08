@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+  <head>
+    <title>OpenAI Davinci Chatbot</title>
+    <style>
+      #chat-messages {
+        height: calc(100vh - 100px);
+        width: 100%;
+        overflow: auto;
+        scroll-behavior: smooth;
+      }
+
+      #user-input {
+        resize: none; /* Disable user from resizing textarea */
+        width: 100%;
+        height: auto; /* Set initial height to auto to fit initial text */
+        min-height: 2em; /* Set a minimum height to fit two lines */
+        box-sizing: border-box; /* Include padding and border in height calculation */
+        font-size: 16px; /* Set a font size */
+        line-height: 1.4; /* Set the line height */
+      }
+
+      form {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        height: 100px;
+        width: 100%;
+        padding-top: 10px;
+        padding-right: 20px;
+        padding-bottom: 10px;
+        padding-left: 0px;
+        box-sizing: border-box; /* include padding in width and height calculations */
+      }
+
+      /* Make the text area fill up the remaining space in the flex container */
+      #user-input {
+        flex: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>OpenAI Davinci Chatbot</h1>
+    <div id="chat-messages">
+      {% for message in messages %}
+      <div class="message {% if message.is_user %}user-message{% else %}bot-message{% endif %}">
+        {% if message.is_user %}
+        <p><strong>User:</strong> {{ message.text }}</p>
+        {% else %}
+        <p><strong>Davinci:</strong> {{ message.text }}</p>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    <form method="POST" action="{{ url_for('chat') }}">
+      <textarea id="user-input" name="question" placeholder="Type your question here"></textarea>
+      <button type="submit">Send</button>
+    </form>
+    <script>
+      function scrollToBottom() {
+        const chatMessages = document.getElementById('chat-messages');
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+
+      window.onload = scrollToBottom;
+    </script>
+  </body>
+</html>
