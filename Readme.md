@@ -29,4 +29,4 @@ Enjoy 😄
 
 # Contributing
 
-This project is open to contributions. If you would like to contribute, please contact Laura.
+This project is open to contributions. If you would like to contribute, please contact <name>.
