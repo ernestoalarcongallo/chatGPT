@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>OpenAI Davinci Chatbot</title>
+    <title>OpenAI Chatbot</title>
     <style>
       #chat-messages {
         height: calc(100vh - 100px);
@@ -40,7 +40,7 @@
     </style>
   </head>
   <body>
-    <h1>OpenAI Davinci Chatbot</h1>
+    <h1>OpenAI Chatbot</h1>
     <div id="chat-messages">
       {% for message in messages %}
       <div class="message {% if message.is_user %}user-message{% else %}bot-message{% endif %}">
