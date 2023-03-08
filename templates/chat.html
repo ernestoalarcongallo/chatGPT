@@ -2,7 +2,42 @@
 <html>
   <head>
     <title>OpenAI Chatbot</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,800" rel="stylesheet">
     <style>
+      body {
+        font-family: 'Open Sans', sans-serif;
+      }
+
+      h1 {
+        display: flex;
+        justify-content: center;
+        font-size: 3em;
+        font-weight: 800;
+      }
+
+      #chat-messages, #user-input {
+        font-size: 16px;
+        line-height: 1.4;
+      }
+
+      textarea {
+        font-size: 10px;
+        font-family: 'Open Sans', sans-serif;
+        border: 1px solid #ccc; /* Add this line to set the border */
+      }
+
+      button {
+        font-size: 20px;
+        font-weight: 600;
+        font-family: 'Open Sans', sans-serif;
+        background-color: transparent;
+        border: none;
+      }
+
+      .message p {
+        margin: 0;
+      }
+
       #chat-messages {
         height: calc(100vh - 100px);
         width: 100%;
@@ -16,28 +51,47 @@
         height: auto; /* Set initial height to auto to fit initial text */
         min-height: 2em; /* Set a minimum height to fit two lines */
         box-sizing: border-box; /* Include padding and border in height calculation */
-        font-size: 16px; /* Set a font size */
-        line-height: 1.4; /* Set the line height */
+        caret-color: #00BDFF;
+        font-weight: 200; /* Add this line to set the cursor font weight to bold */
+        caret-width: 6px;
       }
 
       form {
-        display: flex;
         position: fixed;
         bottom: 0;
-        height: 100px;
         width: 100%;
+        box-sizing: border-box;
+      }
+
+      .form-container {
+        display: flex;
+        height: 80px;
         padding-top: 10px;
         padding-right: 20px;
         padding-bottom: 10px;
         padding-left: 0px;
-        box-sizing: border-box; /* include padding in width and height calculations */
+        box-sizing: border-box;
       }
 
-      /* Make the text area fill up the remaining space in the flex container */
       #user-input {
         flex: 1;
+        margin-right: 10px;
+      }
+
+      button {
+        flex: 0;
+        width: 100px;
       }
     </style>
+    <script>
+      function changeCaretSize(size) {
+        var css = '#user-input { caret-color: #00BDFF; caret-width: ' + size + 'px; }';
+        var style = document.createElement('style');
+        style.appendChild(document.createTextNode(css));
+        document.head.appendChild(style);
+      }
+      changeCaretSize(6);
+    </script>
   </head>
   <body>
     <h1>OpenAI Chatbot</h1>
@@ -53,13 +107,16 @@
       {% endfor %}
     </div>
     <form method="POST" action="{{ url_for('chat') }}">
-      <textarea id="user-input" name="question" placeholder="Type your question here"></textarea>
-      <button type="submit">Send</button>
+      <div class="form-container">
+        <textarea id="user-input" name="question"></textarea>
+        <button type="submit">Send</button>
+      </div>
     </form>
     <script>
       function scrollToBottom() {
         const chatMessages = document.getElementById('chat-messages');
         chatMessages.scrollTop = chatMessages.scrollHeight;
+        document.getElementById("user-input").focus();
       }
 
       window.onload = scrollToBottom;
