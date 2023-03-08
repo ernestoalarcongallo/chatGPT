@@ -21,8 +21,6 @@ def generate_response(question: str) -> str:
         engine="text-davinci-002",
         prompt=question,
         max_tokens=1024,
-        # n=1,
-        # stop=None,
         temperature=0.5,
     )
 
