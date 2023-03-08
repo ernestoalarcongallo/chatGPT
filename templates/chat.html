@@ -21,21 +21,30 @@
       }
 
       form {
-        display: flex;
         position: fixed;
         bottom: 0;
-        height: 100px;
         width: 100%;
+        box-sizing: border-box;
+      }
+
+      .form-container {
+        display: flex;
+        height: 80px;
         padding-top: 10px;
         padding-right: 20px;
         padding-bottom: 10px;
         padding-left: 0px;
-        box-sizing: border-box; /* include padding in width and height calculations */
+        box-sizing: border-box;
       }
 
-      /* Make the text area fill up the remaining space in the flex container */
       #user-input {
         flex: 1;
+        margin-right: 10px;
+      }
+
+      button {
+        flex: 0;
+        width: 100px;
       }
     </style>
   </head>
@@ -53,8 +62,10 @@
       {% endfor %}
     </div>
     <form method="POST" action="{{ url_for('chat') }}">
-      <textarea id="user-input" name="question" placeholder="Type your question here"></textarea>
-      <button type="submit">Send</button>
+      <div class="form-container">
+        <textarea id="user-input" name="question" placeholder="Type your question here"></textarea>
+        <button type="submit">Send</button>
+      </div>
     </form>
     <script>
       function scrollToBottom() {

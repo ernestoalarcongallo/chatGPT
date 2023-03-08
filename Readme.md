@@ -10,21 +10,17 @@ Please find this app no more than a proof of concept.
 Enjoy 😄
 
 ## Installation
-
-1. Install the required dependencies:
-    ```bash
-    pip install -r requirements.txt
-    ```
-2. Set up your OpenAI API credentials by creating a config.yml file in the config directory with the following format:
-    ```yaml
-    key: YOUR_API_KEY_HERE
-    ```
+This app is using Flask and is deployed in vercel.com. 
+For a local deployment you first need to install the vercel CLI:
+ ```bash
+    sudo npm i -g vercel
+```
 ## Usage
-1. Start the Flask server:
-   ```bash
-   python app.py
-   ```
-2. Navigate to http://localhost:5000 in your web browser.
+1. Once vercel is installed, launch the app.
+    ```bash
+    vercel dev
+    ```
+2. Navigate to http://localhost:3000 in your web browser.
 3. Enter a question or statement in the chat box and press "Send" to receive a response from the chatbot.
 
 # Contributing
