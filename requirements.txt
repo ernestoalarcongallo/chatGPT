@@ -1,4 +1,3 @@
 openai
 flask
 PyYAML
-rasa
